@@ -1,7 +1,7 @@
 package com.system.Blog.service;
 
-import com.segundaApp.miApp2.model.Posteo;
-import com.segundaApp.miApp2.repository.IposteoRepository;
+import com.system.Blog.model.Posteo;
+import com.system.Blog.repository.IposteoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
