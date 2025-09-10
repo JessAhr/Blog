@@ -1,5 +1,7 @@
 package com.system.Blog.controller;
 
+import com.system.Blog.model.Posteo;
+import com.system.Blog.service.PosteoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,7 +10,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/posteos")
 public class PosteoController {
-    private PosteoService posteoService;
+
+    private final PosteoService posteoService;
 
     public PosteoController(PosteoService posteoService) {
         this.posteoService = posteoService;
@@ -21,12 +24,12 @@ public class PosteoController {
 
     @GetMapping("/{id}")
     public Posteo obtenerPorId(@PathVariable Long id) {
-        return posteoService.obtenerId(id);
+        return posteoService.obtenerPorId(id);
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<String> guardarPersona(@RequestBody Posteo posteo) {
+    public ResponseEntity<String> guardarPosteo(@RequestBody Posteo posteo) {
         posteoService.guardarPosteo(posteo);
-        return ResponseEntity.ok("Persona agregada con éxito");
+        return ResponseEntity.ok("Posteo agregado con éxito");
     }
 }

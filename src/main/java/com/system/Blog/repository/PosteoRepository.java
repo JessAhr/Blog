@@ -1,34 +1,38 @@
 package com.system.Blog.repository;
 
-public class PosteoRepository {
-    @Repository
-    public static class PosteoRepository implements IposteoRepository {
+import com.system.Blog.model.Posteo;
+import org.springframework.stereotype.Repository;
 
-        private List<Posteo> posteo = new ArrayList<>();
+import java.util.ArrayList;
+import java.util.List;
 
-        public PersonaRepository() {
-            posteo.add(new Posteo(1L, "Aventuras en Papitas", "Generation"));
-            posteo.add(new Posteo(2L, "¿Cómo colarse en TransMilenio?", "Alcaldía Mayor de Bogotá"));
-        }
+@Repository
+public class PosteoRepository implements IposteoRepository {
 
-        @Override
-        public List<Posteo> findAll() {
-            return posteo;
-        }
+    private List<Posteo> posteos = new ArrayList<>();
 
-        @Override
-        public Posteo findById(Long id) {
-            for (Posteo persona : posteo) {
-                if (persona.getId_posteo().equals(id)) {
-                    return posteo;
-                }
+    public PosteoRepository() {
+        posteos.add(new Posteo(1L, "Aventuras en Papitas", "Generation"));
+        posteos.add(new Posteo(2L, "¿Cómo colarse en TransMilenio?", "Alcaldía Mayor de Bogotá"));
+    }
+
+    @Override
+    public List<Posteo> findAll() {
+        return posteos;
+    }
+
+    @Override
+    public Posteo findById(Long id) {
+        for (Posteo posteo : posteos) {
+            if (posteo.getId().equals(id)) {
+                return posteo;
             }
-            return null;
         }
+        return null;
+    }
 
-        @Override
-        public void save(Posteo posteo) {
-            posteo.add(posteo);
-        }
+    @Override
+    public void save(Posteo posteo) {
+        posteos.add(posteo);
     }
 }
