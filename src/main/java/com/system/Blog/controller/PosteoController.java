@@ -32,4 +32,19 @@ public class PosteoController {
         posteoService.guardarPosteo(posteo);
         return ResponseEntity.ok("Posteo agregado con éxito");
     }
+
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String> eliminarPosteo(@PathVariable Long id) {
+        posteoService.eliminarPosteo(id);
+        return ResponseEntity.ok("Posteo eliminado con éxito");
+    }
+
+    @PutMapping("/editar/{id}")
+    public ResponseEntity<String> editarPosteo(@PathVariable Long id, @RequestBody Posteo posteo) {
+        posteo.setId(id); // asegurar que use el id del path
+        posteoService.actualizarPosteo(posteo);
+        return ResponseEntity.ok("Posteo actualizado con éxito");
+    }
+
 }

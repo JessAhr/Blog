@@ -31,4 +31,12 @@ public class PosteoService implements IservicePosteo {
     public void guardarPosteo(Posteo posteo) {
         posteoRepository.save(posteo);
     }
+
+    public void eliminarPosteo(Long id) {
+        posteoRepository.delete(id);
+    }
+
+    public void actualizarPosteo(Posteo posteo) {
+        posteoRepository.update(posteo);
+    }
 }

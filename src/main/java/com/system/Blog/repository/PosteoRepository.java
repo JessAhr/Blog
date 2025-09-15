@@ -35,4 +35,18 @@ public class PosteoRepository implements IposteoRepository {
     public void save(Posteo posteo) {
         posteos.add(posteo);
     }
+    @Override
+    public void delete(Long id) {
+        posteos.removeIf(posteo -> posteo.getId().equals(id));
+    }
+
+    @Override
+    public void update(Posteo posteo) {
+        for (int i = 0; i < posteos.size(); i++) {
+            if (posteos.get(i).getId().equals(posteo.getId())) {
+                posteos.set(i, posteo);
+                return;
+            }
+        }
+    }
 }

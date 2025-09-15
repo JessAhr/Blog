@@ -7,4 +7,6 @@ public interface IposteoRepository {
     List<Posteo> findAll();
     Posteo findById(Long id);
     void save(Posteo posteo);
+    void delete(Long id);
+    void update(Posteo posteo);
 }
