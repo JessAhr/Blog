@@ -1,16 +1,26 @@
 package com.system.Blog.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Posteo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
-    private String autor;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private Author author;
+
+
 
     public Posteo() {
     }
-    public Posteo(Long id, String titulo, String autor) {
+    public Posteo(Long id, String titulo, Author author) {
+
         this.id = id;
         this.titulo = titulo;
-        this.autor = autor;
+        this.author = author;
     }
 
     public Long getId() {
@@ -25,10 +35,10 @@ public class Posteo {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    public String getAutor() {
-        return autor;
+    public Author getAuthor() {return author;}
+    public void setAuthor(String autor) {
+        this.author = author;
     }
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
+
+
 }

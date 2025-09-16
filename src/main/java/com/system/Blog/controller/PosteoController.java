@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/posteos")
@@ -23,7 +24,7 @@ public class PosteoController {
     }
 
     @GetMapping("/{id}")
-    public Posteo obtenerPorId(@PathVariable Long id) {
+    public Optional<Posteo> obtenerPorId(@PathVariable Long id) {
         return posteoService.obtenerPorId(id);
     }
 
